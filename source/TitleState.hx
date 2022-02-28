@@ -223,6 +223,7 @@ class TitleState extends MusicBeatState
 		logoBl.animation.play('bump');
 		logoBl.updateHitbox();
 		logoBl.screenCenter();
+		logoBl.y -= 200;
 		// logoBl.color = FlxColor.BLACK;
 
 		swagShader = new ColorSwap();

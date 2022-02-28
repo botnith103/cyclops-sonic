@@ -67,6 +67,7 @@ class PlayState extends MusicBeatState
 {
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
+	public var isCameraTweening = false;
 
 	public static var ratingStuff:Array<Dynamic> = [
 		['You Suck!', 0.2], //From 0% to 19%
@@ -1572,7 +1573,7 @@ class PlayState extends MusicBeatState
 				switch (swagCounter)
 				{
 					case 0:
-						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
+						//FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
 					case 1:
 						countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
 						countdownReady.scrollFactor.set();
@@ -1592,7 +1593,7 @@ class PlayState extends MusicBeatState
 								countdownReady.destroy();
 							}
 						});
-						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
+						//FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
 					case 2:
 						countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
 						countdownSet.scrollFactor.set();
@@ -1611,7 +1612,7 @@ class PlayState extends MusicBeatState
 								countdownSet.destroy();
 							}
 						});
-						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
+						//FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
 					case 3:
 						countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
 						countdownGo.scrollFactor.set();
@@ -1632,7 +1633,7 @@ class PlayState extends MusicBeatState
 								countdownGo.destroy();
 							}
 						});
-						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
+						//FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
 					case 4:
 				}
 
@@ -2217,6 +2218,12 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
+		if (dad.animation.curAnim.name != 'idle' && dad.animation.curAnim.name != 'alt-idle') {
+			isCameraTweening = true;
+		} else {
+			isCameraTweening = false;
+		}
+
 		if(ratingName == '?') {
 			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName;
 		} else {
@@ -2658,20 +2665,20 @@ class PlayState extends MusicBeatState
 	public function triggerEventNote(eventName:String, value1:String, value2:String) {
 		switch(eventName) {
 			case "TailsHit":
-				healthBar.setRange(0,1);
-				if (daTails == null) {
-					daTails = new FlxSprite(850,0);
+				//healthBar.setRange(0,1);
+				if (daTails == null && !ClientPrefs.downScroll) {
+					daTails = new FlxSprite(485,-400);
 					daTails.frames = Paths.getSparrowAtlas("tails_do_not","shared");
 					daTails.animation.addByPrefix('hit', 'tails no', 24, false);
 					daTails.scrollFactor.set();
 					daTails.scale.set(0.4,0.4);
-					daTails.alpha = 0.000001;
+					daTails.alpha = 1;
 					daTails.cameras = [camOther];
 					add(daTails);
 				}
-				if (daKnux == null) {
-					daKnux = new FlxSprite(485,0);
-					daKnux.frames = Paths.getSparrowAtlas("knuckless",'shared');
+				if (daKnux == null && ClientPrefs.downScroll) {
+					daKnux = new FlxSprite(185,-300);
+					daKnux.frames = Paths.getSparrowAtlas("knucklees",'shared');
 					daKnux.animation.addByPrefix('khit', 'kuckles no', 24, false);
 					daKnux.scrollFactor.set();
 					daKnux.scale.set(0.5,0.5);
@@ -2681,112 +2688,114 @@ class PlayState extends MusicBeatState
 				}
 				//add(daTails);
 				if (ClientPrefs.downScroll) {
-					daKnux.alpha = 1;
-					daKnux.animation.play('khit', true);
-					new FlxTimer().start(2, function (tmr:FlxTimer) {
-						daKnux.alpha = 0.00001;
-						tmr.destroy();
-					});
-					new FlxTimer().start(1.5, function (tmr:FlxTimer) {
-						playerStrums.forEach(function (leNote:StrumNote) {
-							/*var punch1 = FlxG.random.int(-25,0);
-							var knockFactor = punch1 * 0.75;
-							var punch2 = punch1 - FlxG.random.int(25,75) - knockFactor;
-							var knockFactor = knockFactor * 0.75;
-							var punch3 = punch2 - FlxG.random.int(25,75) - knockFactor;
-							var knockFactor = knockFactor * 0.75;
-							var punch4 = punch3 - FlxG.random.int(25,75) - knockFactor;*/
-							var punch1 = FlxG.random.int(-85,-35);
-							var punch2 = punch1 + FlxG.random.int(15,35);
-							switch (leNote.noteData) {
-								case 0:
-									FlxTween.tween(leNote, {y: 570 - FlxG.random.float(0, 35)}, 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-									FlxTween.tween(leNote, {x: 740 + punch1}, 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-									FlxTween.angle(leNote, 0, FlxG.random.int(10,50), 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-								case 1:
-									FlxTween.tween(leNote, {y: 570 - FlxG.random.float(-35, 0)}, 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-									FlxTween.tween(leNote, {x: 850 + punch2}, 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-									FlxTween.angle(leNote, 0, FlxG.random.int(0,60), 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-								case 2:
-									FlxTween.tween(leNote, {y: 570 - FlxG.random.float(-35, 0)}, 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-									FlxTween.tween(leNote, {x: 960 - punch2}, 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-									FlxTween.angle(leNote, 0, FlxG.random.int(5,50), 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-								case 3:
-									FlxTween.tween(leNote, {y: 570 - FlxG.random.float(0, 35)}, 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-									FlxTween.tween(leNote, {x: 1070 - punch1}, 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-									FlxTween.angle(leNote, 0, FlxG.random.int(20,50), 0.25, {
-										ease: FlxEase.quintOut,
-										onComplete: function (twn:FlxTween) {
-											twn.destroy();
-										}
-									});
-							}
+					//new FlxTimer().start(0.32, function (tmr:FlxTimer) {
+						daKnux.alpha = 1;
+						daKnux.animation.play('khit', true);
+						new FlxTimer().start(2, function (tmr:FlxTimer) {
+							daKnux.alpha = 0.00001;
+							tmr.destroy();
 						});
-						tmr.destroy();
-					});
+						new FlxTimer().start(1.5, function (tmr:FlxTimer) {
+							playerStrums.forEach(function (leNote:StrumNote) {
+								/*var punch1 = FlxG.random.int(-25,0);
+								var knockFactor = punch1 * 0.75;
+								var punch2 = punch1 - FlxG.random.int(25,75) - knockFactor;
+								var knockFactor = knockFactor * 0.75;
+								var punch3 = punch2 - FlxG.random.int(25,75) - knockFactor;
+								var knockFactor = knockFactor * 0.75;
+								var punch4 = punch3 - FlxG.random.int(25,75) - knockFactor;*/
+								var punch1 = FlxG.random.int(-85,-35);
+								var punch2 = punch1 + FlxG.random.int(15,35);
+								switch (leNote.noteData) {
+									case 0:
+										FlxTween.tween(leNote, {y: 570 - FlxG.random.float(0, 35)}, 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+										FlxTween.tween(leNote, {x: 740 + punch1}, 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+										FlxTween.angle(leNote, 0, FlxG.random.int(10,50), 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+									case 1:
+										FlxTween.tween(leNote, {y: 570 - FlxG.random.float(-35, 0)}, 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+										FlxTween.tween(leNote, {x: 850 + punch2}, 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+										FlxTween.angle(leNote, 0, FlxG.random.int(0,60), 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+									case 2:
+										FlxTween.tween(leNote, {y: 570 - FlxG.random.float(-35, 0)}, 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+										FlxTween.tween(leNote, {x: 960 - punch2}, 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+										FlxTween.angle(leNote, 0, FlxG.random.int(5,50), 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+									case 3:
+										FlxTween.tween(leNote, {y: 570 - FlxG.random.float(0, 35)}, 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+										FlxTween.tween(leNote, {x: 1070 - punch1}, 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+										FlxTween.angle(leNote, 0, FlxG.random.int(20,50), 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (twn:FlxTween) {
+												twn.destroy();
+											}
+										});
+								}
+							});
+							tmr.destroy();
+						});
+					//});
 				} else {
 					daTails.alpha = 1;
 					daTails.animation.play('hit', true);
-					new FlxTimer().start(2, function (tmr:FlxTimer) {
-						daTails.alpha = 0.00001;
+					new FlxTimer().start(1.2, function (tmr:FlxTimer) {
+						daTails.alpha = 0.000001;
 						tmr.destroy();
 					});
-					new FlxTimer().start(1.5, function (tmr:FlxTimer) {
+					new FlxTimer().start(0.86, function (tmr:FlxTimer) {
 						playerStrums.forEach(function (leNote:StrumNote) {
 							var punch1 = FlxG.random.int(-25,0);
 							var knockFactor = punch1 * 0.75;
@@ -2885,8 +2894,83 @@ class PlayState extends MusicBeatState
 							FlxTween.angle(leNote,leNote.angle, 0, 0.0001, {
 								ease: FlxEase.quintOut,
 								onComplete: function (ttwn:FlxTween) {
-									twn.destroy();
-									ttwn.destroy();
+									if (!ClientPrefs.downScroll) {
+										FlxTween.tween(leNote, {y: 50}, 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (ytwn:FlxTween) {
+												ytwn.destroy();
+											}
+										});
+										switch (leNote.noteData) {
+											case 0:
+												FlxTween.tween(leNote, {x: 740}, 0.25, {
+													ease: FlxEase.quintOut,
+													onComplete: function (xtwn:FlxTween) {
+														xtwn.destroy();
+													}
+												});
+											case 1:
+												FlxTween.tween(leNote, {x: 850}, 0.25, {
+													ease: FlxEase.quintOut,
+													onComplete: function (xtwn:FlxTween) {
+														xtwn.destroy();
+													}
+												});
+											case 2:
+												FlxTween.tween(leNote, {x: 960}, 0.25, {
+													ease: FlxEase.quintOut,
+													onComplete: function (xtwn:FlxTween) {
+														xtwn.destroy();
+													}
+												});
+											case 3:
+												FlxTween.tween(leNote, {x: 1070}, 0.25, {
+													ease: FlxEase.quintOut,
+													onComplete: function (xtwn:FlxTween) {
+														xtwn.destroy();
+													}
+												});
+										}
+									} else {
+										FlxTween.tween(leNote, {y: 570}, 0.25, {
+											ease: FlxEase.quintOut,
+											onComplete: function (ytwn:FlxTween) {
+												ytwn.destroy();
+											}
+										});
+										switch (leNote.noteData) {
+											case 0:
+												FlxTween.tween(leNote, {x: 740}, 0.25, {
+													ease: FlxEase.quintOut,
+													onComplete: function (xtwn:FlxTween) {
+														xtwn.destroy();
+													}
+												});
+											case 1:
+												FlxTween.tween(leNote, {x: 850}, 0.25, {
+													ease: FlxEase.quintOut,
+													onComplete: function (xtwn:FlxTween) {
+														xtwn.destroy();
+													}
+												});
+											case 2:
+												FlxTween.tween(leNote, {x: 960}, 0.25, {
+													ease: FlxEase.quintOut,
+													onComplete: function (xtwn:FlxTween) {
+														xtwn.destroy();
+													}
+												});
+											case 3:
+												FlxTween.tween(leNote, {x: 1070}, 0.25, {
+													ease: FlxEase.quintOut,
+													onComplete: function (xtwn:FlxTween) {
+														xtwn.destroy();
+													}
+												});
+										}
+									}
+									//twn.destroy();
+									//ttwn.destroy();
 								}
 							});
 						}
@@ -3259,6 +3343,7 @@ class PlayState extends MusicBeatState
 	{
 		if(isDad)
 		{
+			//isCameraTweening = true;
 			camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
 			camFollow.x += dad.cameraPosition[0];
 			camFollow.y += dad.cameraPosition[1];
@@ -3266,6 +3351,7 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
+			//isCameraTweening = false;
 			camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
 
 			switch (curStage)
@@ -4393,6 +4479,28 @@ class PlayState extends MusicBeatState
 		if(lastBeatHit >= curBeat) {
 			//trace('BEAT HIT: ' + curBeat + ', LAST HIT: ' + lastBeatHit);
 			return;
+		}
+		//if (curStep > )
+		if (isCameraTweening) {
+			var anglecock = 1;
+			var anglevagina = 1;
+			if (curBeat % 2 == 0)
+				anglecock = anglevagina;
+			else
+				anglecock = -anglevagina;
+
+			//camHUD.angle = anglecock*3;
+			//FlxG.camera.angle = anglecock*3;
+			FlxTween.tween(camHUD, {angle: anglecock}, Conductor.stepCrochet*0.002, {ease: FlxEase.circOut});
+			FlxTween.tween(camHUD, {x: -anglecock*8}, Conductor.crochet*0.001, {ease: FlxEase.linear});
+			//FlxTween.tween(camGame, {angle: anglecock}, Conductor.stepCrochet*0.002, {ease: FlxEase.circOut});
+			//FlxTween.tween(camGame, {x: -anglecock*8}, Conductor.crochet*0.001, {ease: FlxEase.linear});
+		}
+		else {
+			//camGame.angle = 0;
+			camHUD.angle = 0;
+			camHUD.x = 0;
+			//camGame.x = 0;
 		}
 
 		if (generatedMusic)

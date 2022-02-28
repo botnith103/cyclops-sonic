@@ -64,7 +64,7 @@ class Main extends Sprite
                         androidDir = storagePath + "/" + Application.current.meta.get("packageName") + "/files/";
                 }
                 return androidDir;
-                #else
+            #else
                 return "";
 	        #end
         }
