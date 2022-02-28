@@ -1,6 +1,6 @@
 package;
 
-#if MODS_ALLOWED
+#if sys
 import sys.io.File;
 import sys.FileSystem;
 #end
@@ -84,7 +84,7 @@ class WeekData {
 		#if MODS_ALLOWED
 		var disabledMods:Array<String> = [];
 		var modsListPath:String = Main.getDataPath() + 'modsList.txt';
-		var directories:Array<String> = [Paths.mods(), Main.getDataPath() + Paths.getPreloadPath()];
+		var directories:Array<String> = [Paths.mods(), Paths.getPreloadPath()];
 		var originalLength:Int = directories.length;
 		if(FileSystem.exists(modsListPath))
 		{
@@ -124,7 +124,7 @@ class WeekData {
 		var originalLength:Int = directories.length;
 		#end
 
-		var sexList:Array<String> = CoolUtil.coolTextFile(Main.getDataPath() + Paths.getPreloadPath('weeks/weekList.txt'));
+		var sexList:Array<String> = CoolUtil.coolTextFile(Paths.getPreloadPath('weeks/weekList.txt'));
 		for (i in 0...sexList.length) {
 			for (j in 0...directories.length) {
 				var fileToCheck:String = directories[j] + 'weeks/' + sexList[i] + '.json';
@@ -134,9 +134,9 @@ class WeekData {
 						var weekFile:WeekData = new WeekData(week);
 
 						#if MODS_ALLOWED
-						if(j >= originalLength) {
-							weekFile.folder = directories[j].substring(Paths.mods().length, directories[j].length-1);
-						}
+						//if(j >= originalLength) {
+						//	weekFile.folder = directories[j].substring(Paths.mods().length, directories[j].length-1);
+						//}
 						#end
 
 						if(weekFile != null && (isStoryMode == null || (isStoryMode && !weekFile.hideStoryMode) || (!isStoryMode && !weekFile.hideFreeplay))) {
@@ -148,7 +148,7 @@ class WeekData {
 			}
 		}
 
-		#if MODS_ALLOWED
+		//#if MODS_ALLOWED
 		for (i in 0...directories.length) {
 			var directory:String = directories[i] + 'weeks/';
 			if(FileSystem.exists(directory)) {
@@ -172,7 +172,7 @@ class WeekData {
 				}
 			}
 		}
-		#end
+		//#end
 	}
 
 	private static function addWeek(weekToCheck:String, path:String, directory:String, i:Int, originalLength:Int)

@@ -45,7 +45,8 @@ import lime.media.AudioBuffer;
 import haxe.io.Bytes;
 import flash.geom.Rectangle;
 import flixel.util.FlxSort;
-#if MODS_ALLOWED
+//#if MODS_ALLOWED
+#if sys
 import sys.io.File;
 import sys.FileSystem;
 import flash.media.Sound;
@@ -869,7 +870,7 @@ class ChartingState extends MusicBeatState
 		}
 
 		#if LUA_ALLOWED
-		var directories:Array<String> = [Paths.mods('custom_notetypes/'), Paths.mods(Paths.currentModDirectory + '/custom_notetypes/')];
+		/*var directories:Array<String> = [Paths.mods('custom_notetypes/'), Paths.mods(Paths.currentModDirectory + '/custom_notetypes/')];
 		for (i in 0...directories.length) {
 			var directory:String =  directories[i];
 			if(FileSystem.exists(directory)) {
@@ -886,7 +887,7 @@ class ChartingState extends MusicBeatState
 					}
 				}
 			}
-		}
+		}*/
 		#end
 
 		for (i in 1...displayNameList.length) {
@@ -922,7 +923,7 @@ class ChartingState extends MusicBeatState
 		tab_group_event.name = 'Events';
 
 		#if LUA_ALLOWED
-		var eventPushedMap:Map<String, Bool> = new Map<String, Bool>();
+		/*var eventPushedMap:Map<String, Bool> = new Map<String, Bool>();
 		var directories:Array<String> = [Paths.mods('custom_events/'), Paths.mods(Paths.currentModDirectory + '/custom_events/')];
 		for (i in 0...directories.length) {
 			var directory:String =  directories[i];
@@ -940,7 +941,7 @@ class ChartingState extends MusicBeatState
 			}
 		}
 		eventPushedMap.clear();
-		eventPushedMap = null;
+		eventPushedMap = null;*/
 		#end
 
 		descText = new FlxText(20, 200, 0, eventStuff[0][0]);

@@ -66,7 +66,7 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
-			['PORTED BY ZACK'],
+			//['PORTED BY ZACK'],
 			['Speed.GIF Team'],
 			['PowPow', 'pow', 'Director + Artist', 'https://twitter.com/powpowwwwwww', '0E4CC7'],
 			['DeltaB', 'delta', 'Director + Musician', 'https://twitter.com/BeltaDGaming', '830EC7'],
