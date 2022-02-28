@@ -1,5 +1,6 @@
 package;
 
+import haxe.iterators.StringIterator;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -2652,9 +2653,245 @@ class PlayState extends MusicBeatState
 		//trace('Control result: ' + pressed);
 		return pressed;
 	}
-
+	public var daTails:FlxSprite;
+	public var daKnux:FlxSprite;
 	public function triggerEventNote(eventName:String, value1:String, value2:String) {
 		switch(eventName) {
+			case "TailsHit":
+				healthBar.setRange(0,1);
+				if (daTails == null) {
+					daTails = new FlxSprite(850,0);
+					daTails.frames = Paths.getSparrowAtlas("tails_do_not","shared");
+					daTails.animation.addByPrefix('hit', 'tails no', 24, false);
+					daTails.scrollFactor.set();
+					daTails.scale.set(0.4,0.4);
+					daTails.alpha = 0.000001;
+					daTails.cameras = [camOther];
+					add(daTails);
+				}
+				if (daKnux == null) {
+					daKnux = new FlxSprite(485,0);
+					daKnux.frames = Paths.getSparrowAtlas("knuckless",'shared');
+					daKnux.animation.addByPrefix('khit', 'kuckles no', 24, false);
+					daKnux.scrollFactor.set();
+					daKnux.scale.set(0.5,0.5);
+					daKnux.cameras = [camOther];
+					daKnux.alpha = 0.000001;
+					add(daKnux);
+				}
+				//add(daTails);
+				if (ClientPrefs.downScroll) {
+					daKnux.alpha = 1;
+					daKnux.animation.play('khit', true);
+					new FlxTimer().start(2, function (tmr:FlxTimer) {
+						daKnux.alpha = 0.00001;
+						tmr.destroy();
+					});
+					new FlxTimer().start(1.5, function (tmr:FlxTimer) {
+						playerStrums.forEach(function (leNote:StrumNote) {
+							/*var punch1 = FlxG.random.int(-25,0);
+							var knockFactor = punch1 * 0.75;
+							var punch2 = punch1 - FlxG.random.int(25,75) - knockFactor;
+							var knockFactor = knockFactor * 0.75;
+							var punch3 = punch2 - FlxG.random.int(25,75) - knockFactor;
+							var knockFactor = knockFactor * 0.75;
+							var punch4 = punch3 - FlxG.random.int(25,75) - knockFactor;*/
+							var punch1 = FlxG.random.int(-85,-35);
+							var punch2 = punch1 + FlxG.random.int(15,35);
+							switch (leNote.noteData) {
+								case 0:
+									FlxTween.tween(leNote, {y: 570 - FlxG.random.float(0, 35)}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.tween(leNote, {x: 740 + punch1}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.angle(leNote, 0, FlxG.random.int(10,50), 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+								case 1:
+									FlxTween.tween(leNote, {y: 570 - FlxG.random.float(-35, 0)}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.tween(leNote, {x: 850 + punch2}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.angle(leNote, 0, FlxG.random.int(0,60), 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+								case 2:
+									FlxTween.tween(leNote, {y: 570 - FlxG.random.float(-35, 0)}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.tween(leNote, {x: 960 - punch2}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.angle(leNote, 0, FlxG.random.int(5,50), 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+								case 3:
+									FlxTween.tween(leNote, {y: 570 - FlxG.random.float(0, 35)}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.tween(leNote, {x: 1070 - punch1}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.angle(leNote, 0, FlxG.random.int(20,50), 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+							}
+						});
+						tmr.destroy();
+					});
+				} else {
+					daTails.alpha = 1;
+					daTails.animation.play('hit', true);
+					new FlxTimer().start(2, function (tmr:FlxTimer) {
+						daTails.alpha = 0.00001;
+						tmr.destroy();
+					});
+					new FlxTimer().start(1.5, function (tmr:FlxTimer) {
+						playerStrums.forEach(function (leNote:StrumNote) {
+							var punch1 = FlxG.random.int(-25,0);
+							var knockFactor = punch1 * 0.75;
+							var punch2 = punch1 - FlxG.random.int(25,75) - knockFactor;
+							var knockFactor = knockFactor * 0.75;
+							var punch3 = punch2 - FlxG.random.int(25,75) - knockFactor;
+							var knockFactor = knockFactor * 0.75;
+							var punch4 = punch3 - FlxG.random.int(25,75) - knockFactor;
+							switch (leNote.noteData) {
+								case 0:
+									FlxTween.tween(leNote, {y: 50 + FlxG.random.float(0, 35)}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.tween(leNote, {x: 740 + punch4}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.angle(leNote, 0, FlxG.random.int(10,50), 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+								case 1:
+									FlxTween.tween(leNote, {y: 50 + FlxG.random.float(-35, 0)}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.tween(leNote, {x: 850 + punch3}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.angle(leNote, 0, FlxG.random.int(0,60), 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+								case 2:
+									FlxTween.tween(leNote, {y: 50 + FlxG.random.float(-35, 0)}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.tween(leNote, {x: 960 + punch2}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.angle(leNote, 0, FlxG.random.int(5,50), 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+								case 3:
+									FlxTween.tween(leNote, {y: 50 + FlxG.random.float(0, 35)}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.tween(leNote, {x: 1070 + punch1}, 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+									FlxTween.angle(leNote, 0, FlxG.random.int(20,50), 0.25, {
+										ease: FlxEase.quintOut,
+										onComplete: function (twn:FlxTween) {
+											twn.destroy();
+										}
+									});
+							}
+						});
+						tmr.destroy();
+					});
+				}
+			case "TweenSpin":
+				playerStrums.forEach( function (leNote:StrumNote) {
+					FlxTween.angle(leNote,leNote.angle,360,0.35, {
+						ease: FlxEase.quintOut,
+						onComplete: function (twn:FlxTween) {
+							FlxTween.angle(leNote,leNote.angle, 0, 0.0001, {
+								ease: FlxEase.quintOut,
+								onComplete: function (ttwn:FlxTween) {
+									twn.destroy();
+									ttwn.destroy();
+								}
+							});
+						}
+					});
+				});
 			case 'Hey!':
 				var value:Int = 2;
 				switch(value1.toLowerCase().trim()) {

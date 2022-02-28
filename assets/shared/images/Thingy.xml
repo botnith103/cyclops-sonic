@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Thingy.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="thingy0000" x="0" y="0" width="24" height="95" frameX="-1" frameY="-1" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0001" x="24" y="0" width="23" height="98" frameX="-2" frameY="0" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0002" x="24" y="0" width="23" height="98" frameX="-2" frameY="0" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0003" x="47" y="0" width="33" height="66" frameX="-4" frameY="-15" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0004" x="80" y="0" width="30" height="83" frameX="-4" frameY="-7" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0005" x="0" y="98" width="27" height="86" frameX="-5" frameY="-5" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0006" x="27" y="98" width="32" height="86" frameX="0" frameY="-5" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0007" x="59" y="98" width="27" height="86" frameX="-5" frameY="-5" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0008" x="59" y="98" width="27" height="86" frameX="-5" frameY="-5" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0009" x="59" y="98" width="27" height="86" frameX="-5" frameY="-5" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0010" x="59" y="98" width="27" height="86" frameX="-5" frameY="-5" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0011" x="59" y="98" width="27" height="86" frameX="-5" frameY="-5" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0012" x="59" y="98" width="27" height="86" frameX="-5" frameY="-5" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0013" x="59" y="98" width="27" height="86" frameX="-5" frameY="-5" frameWidth="37" frameHeight="98"/>
+	<SubTexture name="thingy0014" x="59" y="98" width="27" height="86" frameX="-5" frameY="-5" frameWidth="37" frameHeight="98"/>
+</TextureAtlas>

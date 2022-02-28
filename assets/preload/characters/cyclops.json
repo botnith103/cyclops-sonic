@@ -1,0 +1,111 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "SPEED_IDLE"
+		},
+		{
+			"offsets": [
+				272,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "SPEED_LEFT"
+		},
+		{
+			"offsets": [
+				-10,
+				-43
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "SPEED_RIGHT"
+		},
+		{
+			"offsets": [
+				-46,
+				140
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "SPEED_UP"
+		},
+		{
+			"offsets": [
+				230,
+				-145
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "SPEED_DOWN"
+		},
+		{
+			"offsets": [
+				939,
+				2
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "turn",
+			"indices": [],
+			"name": "Turn"
+		},
+		{
+			"offsets": [
+				-40,
+				20
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "stareidle",
+			"indices": [],
+			"name": "stareidle"
+		},
+		{
+			"offsets": [
+				-43,
+				4
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "alt-idle",
+			"indices": [],
+			"name": "stareidle"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/SPEED_FULL_ASS_SETS",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "bonic",
+	"flip_x": false,
+	"healthbar_colors": [
+		55,
+		0,
+		255
+	],
+	"camera_position": [
+		-440,
+		50
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}
