@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="knucklees.png">
+	<!-- Created with Adobe Animate version 22.0.4.185 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="kuckles no0000" x="0" y="0" width="569" height="516" frameX="-622" frameY="-772" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0001" x="0" y="0" width="569" height="516" frameX="-622" frameY="-731" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0002" x="0" y="0" width="569" height="516" frameX="-622" frameY="-690" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0003" x="0" y="0" width="569" height="516" frameX="-622" frameY="-649" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0004" x="0" y="0" width="569" height="516" frameX="-621" frameY="-608" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0005" x="0" y="0" width="569" height="516" frameX="-621" frameY="-567" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0006" x="569" y="0" width="569" height="516" frameX="-621" frameY="-525" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0007" x="569" y="0" width="569" height="516" frameX="-621" frameY="-524" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0008" x="569" y="0" width="569" height="516" frameX="-621" frameY="-522" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0009" x="569" y="0" width="569" height="516" frameX="-622" frameY="-520" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0010" x="569" y="0" width="569" height="516" frameX="-622" frameY="-518" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0011" x="569" y="0" width="569" height="516" frameX="-622" frameY="-516" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0012" x="569" y="0" width="569" height="516" frameX="-622" frameY="-514" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0013" x="569" y="0" width="569" height="516" frameX="-622" frameY="-512" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0014" x="569" y="0" width="569" height="516" frameX="-622" frameY="-510" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0015" x="569" y="0" width="569" height="516" frameX="-623" frameY="-508" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0016" x="569" y="0" width="569" height="516" frameX="-623" frameY="-507" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0017" x="569" y="0" width="569" height="516" frameX="-623" frameY="-505" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0018" x="569" y="0" width="569" height="516" frameX="-623" frameY="-503" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0019" x="569" y="0" width="569" height="516" frameX="-623" frameY="-501" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0020" x="569" y="0" width="569" height="516" frameX="-623" frameY="-499" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0021" x="569" y="0" width="569" height="516" frameX="-623" frameY="-498" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0022" x="569" y="0" width="569" height="516" frameX="-623" frameY="-497" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0023" x="569" y="0" width="569" height="516" frameX="-623" frameY="-496" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0024" x="569" y="0" width="569" height="516" frameX="-623" frameY="-495" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0025" x="569" y="0" width="569" height="516" frameX="-623" frameY="-494" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0026" x="569" y="0" width="569" height="516" frameX="-623" frameY="-493" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0027" x="569" y="0" width="569" height="516" frameX="-623" frameY="-493" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0028" x="569" y="0" width="569" height="516" frameX="-623" frameY="-492" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0029" x="569" y="0" width="569" height="516" frameX="-623" frameY="-491" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0030" x="569" y="0" width="569" height="516" frameX="-623" frameY="-490" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0031" x="569" y="0" width="569" height="516" frameX="-623" frameY="-489" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0032" x="569" y="0" width="569" height="516" frameX="-622" frameY="-488" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0033" x="569" y="0" width="569" height="516" frameX="-622" frameY="-487" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0034" x="569" y="0" width="569" height="516" frameX="-622" frameY="-486" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0035" x="569" y="0" width="569" height="516" frameX="-622" frameY="-485" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0036" x="1138" y="0" width="495" height="549" frameX="-650" frameY="-300" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0037" x="1138" y="0" width="495" height="549" frameX="-650" frameY="-300" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0038" x="1633" y="0" width="541" height="812" frameX="-506" frameY="-79" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0039" x="1633" y="0" width="541" height="812" frameX="-506" frameY="-79" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0040" x="2174" y="0" width="596" height="891" frameX="-442" frameY="0" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0041" x="2174" y="0" width="596" height="891" frameX="-442" frameY="0" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0042" x="2174" y="0" width="596" height="891" frameX="-442" frameY="0" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0043" x="2770" y="0" width="598" height="894" frameX="-442" frameY="0" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0044" x="0" y="894" width="811" height="882" frameX="-318" frameY="-9" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0045" x="0" y="894" width="811" height="882" frameX="-318" frameY="-9" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0046" x="569" y="0" width="569" height="516" frameX="-560" frameY="-482" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0047" x="811" y="894" width="567" height="526" frameX="-541" frameY="-508" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0048" x="1378" y="894" width="567" height="537" frameX="-521" frameY="-533" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0049" x="1945" y="894" width="567" height="539" frameX="-497" frameY="-541" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0050" x="2512" y="894" width="567" height="541" frameX="-473" frameY="-549" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0051" x="3079" y="894" width="566" height="543" frameX="-449" frameY="-557" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0052" x="0" y="1776" width="561" height="566" frameX="-399" frameY="-588" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0053" x="561" y="1776" width="552" height="584" frameX="-349" frameY="-620" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0054" x="1113" y="1776" width="555" height="594" frameX="-301" frameY="-654" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0055" x="1668" y="1776" width="560" height="596" frameX="-254" frameY="-691" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0056" x="2228" y="1776" width="563" height="591" frameX="-205" frameY="-729" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0057" x="2791" y="1776" width="565" height="585" frameX="-136" frameY="-746" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0058" x="3356" y="1776" width="564" height="577" frameX="-68" frameY="-764" frameWidth="1192" frameHeight="1350"/>
+	<SubTexture name="kuckles no0059" x="0" y="2372" width="561" height="570" frameX="0" frameY="-780" frameWidth="1192" frameHeight="1350"/>
+</TextureAtlas>
