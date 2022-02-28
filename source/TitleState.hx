@@ -202,15 +202,15 @@ class TitleState extends MusicBeatState
 		
 		
 		#if MODS_ALLOWED
-		//var path = Main.getDataPath() + "mods/" + Paths.currentModDirectory + "/images/logoBumpin.png";
+		var path = Main.getDataPath() + "mods/" + Paths.currentModDirectory + "/images/logoBumpin.png";
 		//trace(path, FileSystem.exists(path));
-		//i//f (!FileSystem.exists(path)){
-			//path = Main.getDataPath() + "mods/images/logoBumpin.png";
-		//}
+		if (!FileSystem.exists(path)){
+			path = Main.getDataPath() + "mods/images/logoBumpin.png";
+		}
 		//trace(path, FileSystem.exists(path));
-		//if (!FileSystem.exists(path)){
-			var path = "assets/images/logoBumpin.png";
-		//}
+		if (!FileSystem.exists(path)){
+			path = Main.getDataPath() + "assets/images/logoBumpin.png";
+		}
 		//trace(path, FileSystem.exists(path));
 		logoBl.frames = FlxAtlasFrames.fromSparrow(BitmapData.fromFile(path),File.getContent(StringTools.replace(path,".png",".xml")));
 		#else
@@ -230,16 +230,16 @@ class TitleState extends MusicBeatState
 			gfDance = new FlxSprite(titleJSON.gfx, titleJSON.gfy);
 		
 		#if MODS_ALLOWED
-		//var path = Main.getDataPath() + "mods/" + Paths.currentModDirectory + "/images/gfDanceTitle.png";
+		var path = Main.getDataPath() + "mods/" + Paths.currentModDirectory + "/images/gfDanceTitle.png";
 		//trace(path, FileSystem.exists(path));
-		//if (!FileSystem.exists(path)){
-			//path = Main.getDataPath() + "mods/images/gfDanceTitle.png";
+		if (!FileSystem.exists(path)){
+			path = Main.getDataPath() + "mods/images/gfDanceTitle.png";
 		//trace(path, FileSystem.exists(path));
-		//}
-		//if (!FileSystem.exists(path)){
-			var path = "assets/images/gfDanceTitle.png";
+		}
+		if (!FileSystem.exists(path)){
+			path = Main.getDataPath() + "assets/images/gfDanceTitle.png";
 		//trace(path, FileSystem.exists(path));
-		//}
+		}
 		gfDance.frames = FlxAtlasFrames.fromSparrow(BitmapData.fromFile(path),File.getContent(StringTools.replace(path,".png",".xml")));
 		#else
 		
@@ -256,15 +256,15 @@ class TitleState extends MusicBeatState
 
 		titleText = new FlxSprite(titleJSON.startx, titleJSON.starty);
 		#if MODS_ALLOWED
-		//var path = Main.getDataPath() + "mods/" + Paths.currentModDirectory + "/images/titleEnter.png";
+		var path = Main.getDataPath() + "mods/" + Paths.currentModDirectory + "/images/titleEnter.png";
 		//trace(path, FileSystem.exists(path));
-		//if (!FileSystem.exists(path)){
-			//path = Main.getDataPath() + "mods/images/titleEnter.png";
-		//}
+		if (!FileSystem.exists(path)){
+			path = Main.getDataPath() + "mods/images/titleEnter.png";
+		}
 		//trace(path, FileSystem.exists(path));
-		//if (!FileSystem.exists(path)){
-			var path = "assets/images/titleEnter.png";
-		//}
+		if (!FileSystem.exists(path)){
+			path = Main.getDataPath() + "assets/images/titleEnter.png";
+		}
 		//trace(path, FileSystem.exists(path));
 		titleText.frames = FlxAtlasFrames.fromSparrow(BitmapData.fromFile(path),File.getContent(StringTools.replace(path,".png",".xml")));
 		#else
